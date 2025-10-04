@@ -1,12 +1,12 @@
-import AboutUsSection from "@/componenets/AboutUs";
-import Associations from "@/componenets/Associations";
-import FloatingButton from "@/componenets/common/FloatingBottom";
-import Footer from "@/componenets/common/Footer";
-import Faq from "@/componenets/Faq";
-import Header from "@/componenets/Header";
-import HowItWorks from "@/componenets/HowItWorks";
-import ServicesComponent from "@/componenets/OurServices";
-import Testimonials from "@/componenets/Testimonials";
+import AboutUsSection from "@/components/AboutUs";
+import Associations from "@/components/Associations";
+import FloatingButton from "@/components/common/FloatingBottom";
+import Footer from "@/components/common/Footer";
+import Faq from "@/components/Faq";
+import Header from "@/components/Header";
+import HowItWorks from "@/components/HowItWorks";
+import ServicesComponent from "@/components/OurServices";
+import Testimonials from "@/components/Testimonials";
 export default function Home() {
   return (
     <>
