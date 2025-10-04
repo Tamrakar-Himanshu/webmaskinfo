@@ -12,12 +12,9 @@ export default function Home() {
     <>
       <Header />
       <Associations />
-
       <AboutUsSection />
-
       <ServicesComponent />
       <Testimonials />
-
       <HowItWorks />
       <Faq />
       <Footer />
