@@ -17,51 +17,66 @@ interface Testimonial {
 }
 
 const Testimonials: React.FC = () => {
-  // Sample testimonial data
+  // Realistic testimonial data
   const testimonialsData: Testimonial[] = [
     {
-      id: 2,
-      name: "Jessica Lee",
-      title: "Project Lead",
-      image: "https://via.placeholder.com/40",
+      id: 1,
+      name: "Sarah Mitchell",
+      title: "CEO at GreenLeaf Organics",
+      image:
+        "https://ui-avatars.com/api/?name=Sarah+Mitchell&background=4F46E5&color=fff&size=128&bold=true",
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Working with this team was a game-changer for our business. They built us a custom e-commerce platform that increased our online sales by 180% in just three months. The attention to detail and their understanding of our brand was exceptional. Highly recommend!",
+      rating: 5,
+    },
+    {
+      id: 2,
+      name: "James Rodriguez",
+      title: "CTO at FinTech Solutions",
+      image:
+        "https://ui-avatars.com/api/?name=James+Rodriguez&background=7C3AED&color=fff&size=128&bold=true",
+      quote:
+        "We needed a robust mobile app for our financial services, and they delivered beyond expectations. The app is secure, fast, and our users love the interface. Their post-launch support has been fantastic. Worth every penny!",
       rating: 4,
     },
     {
       id: 3,
-      name: "David Chen",
-      title: "CTO at Tech Solutions",
-      image: "https://via.placeholder.com/40",
+      name: "Priya Sharma",
+      title: "Marketing Director at Urban Wellness",
+      image:
+        "https://ui-avatars.com/api/?name=Priya+Sharma&background=EC4899&color=fff&size=128&bold=true",
       quote:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      rating: 5,
+        "The website redesign they did for us was absolutely stunning. Not only does it look modern and professional, but our bounce rate dropped by 40% and appointment bookings doubled. They truly understand user experience.",
+      rating: 4,
     },
     {
       id: 4,
-      name: "Emily White",
-      title: "Operations Director",
-      image: "https://via.placeholder.com/40",
+      name: "Michael Chen",
+      title: "Founder at EduTech Innovations",
+      image:
+        "https://ui-avatars.com/api/?name=Michael+Chen&background=10B981&color=fff&size=128&bold=true",
       quote:
-        "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+        "I was impressed by their ability to translate our complex educational platform requirements into a simple, intuitive interface. The AI-powered features they integrated have been a huge hit with our students. Great collaboration throughout!",
       rating: 4,
     },
     {
       id: 5,
-      name: "Alex Johnson",
-      title: "Data Scientist",
-      image: "https://via.placeholder.com/40",
+      name: "Emma Thompson",
+      title: "Operations Manager at LogiTrack Pro",
+      image:
+        "https://ui-avatars.com/api/?name=Emma+Thompson&background=F59E0B&color=fff&size=128&bold=true",
       quote:
-        "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.",
+        "They developed a custom inventory management system that streamlined our entire operation. What used to take us hours now takes minutes. The training they provided was thorough, and they're always quick to respond when we need assistance.",
       rating: 5,
     },
     {
       id: 6,
-      name: "Sarah Kim",
-      title: "UI/UX Designer",
-      image: "https://via.placeholder.com/40",
+      name: "David Okonkwo",
+      title: "VP of Technology at RetailHub",
+      image:
+        "https://ui-avatars.com/api/?name=David+Okonkwo&background=3B82F6&color=fff&size=128&bold=true",
       quote:
-        "Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.",
+        "Professional, responsive, and incredibly skilled. They helped us migrate our legacy system to a modern cloud-based solution with zero downtime. The project was completed on time and within budget. Couldn't ask for more!",
       rating: 4,
     },
   ];
@@ -88,9 +103,8 @@ const Testimonials: React.FC = () => {
 
   return (
     <section
-      className="text-gray-900 py-20 pl-10 hide-pagination relative container mx-auto"
+      className="text-gray-900  bg-linear-to-t from-[#f9fafb] to-[#f5f3f0] py-20 pl-10 hide-pagination relative container mx-auto"
       style={{
-        // background: "linear-gradient(to bottom, #ecf1eebc 70%, #cbcccc)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -141,7 +155,9 @@ const Testimonials: React.FC = () => {
                 style={{ minHeight: "400px", maxHeight: "550px" }}
               >
                 {/* Quote icon - large and faded */}
-                <div className="absolute top-8 right-8 text-blue-100 opacity-50 text-8xl font-bold select-none z-0">&quot;</div>
+                <div className="absolute top-8 right-8 text-blue-100 opacity-50 text-8xl font-bold select-none z-0">
+                  &quot;
+                </div>
 
                 {/* Testimonial Content */}
                 <div className="relative z-10 flex flex-col h-full">
@@ -150,9 +166,9 @@ const Testimonials: React.FC = () => {
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-10 h-10 rounded-full mr-4 object-cover border-2 border-blue-200"
-                      width={40}
-                      height={40}
+                      className="w-12 h-12 rounded-full mr-4 object-cover border-2 border-blue-200 shadow-md"
+                      width={48}
+                      height={48}
                     />
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900">

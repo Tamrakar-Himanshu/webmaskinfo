@@ -14,9 +14,9 @@ export default function Home() {
       <Associations />
       <AboutUsSection />
       <ServicesComponent />
-      <Testimonials />
       <HowItWorks />
       <Faq />
+      <Testimonials />
       <Footer />
       <FloatingButton />
     </>

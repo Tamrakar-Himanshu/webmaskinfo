@@ -14,11 +14,9 @@ const ServicesComponent: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
-            At Tech Monkey, we deliver innovative, tailored solutions to meet
-            your business needs. Our experienced team ensures every solution
-            addresses current demands and supports future growth. We specialize
-            in key tech areas that help your business stay competitive and
-            thrive in a digital-first world.
+            We craft cutting-edge digital solutions that transform your business vision into reality. 
+            From elegant web experiences to powerful mobile apps, our expert team delivers technology 
+            that drives growth, enhances efficiency, and keeps you ahead in the digital age.
           </p>
         </header>
 
@@ -28,11 +26,11 @@ const ServicesComponent: React.FC = () => {
           <div className="lg:col-span-1 lg:row-span-2 bg-gray-50 rounded-2xl p-6 hover:bg-gray-100 transition-all duration-300 border border-gray-200 shadow-sm hover:shadow-md flex flex-col">
             <div className="mb-6">
               <h3 className="text-xl md:text-2xl font-semibold mb-4 text-gray-900">
-                Web Development and Design
+                Web Development & Design
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Unlock growth, efficiency, and innovation with future-ready
-                technology solutions tailored to your unique needs.
+                Create stunning, high-performance websites that captivate users and drive conversions. 
+                We build responsive, SEO-optimized platforms with modern frameworks that scale with your business.
               </p>
             </div>
             <div className="flex-1 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl flex items-center justify-center border border-gray-200 min-h-[10rem]">
@@ -61,6 +59,7 @@ const ServicesComponent: React.FC = () => {
           {[
             {
               title: "Mobile App Development",
+              description: "Build native and cross-platform mobile applications that deliver seamless experiences on iOS and Android. From concept to launch, we create apps users love.",
               colorFrom: "from-orange-50",
               colorTo: "to-amber-50",
               icon: (
@@ -75,7 +74,8 @@ const ServicesComponent: React.FC = () => {
               ),
             },
             {
-              title: "Real Estate Solutions",
+              title: "Custom Software Solutions",
+              description: "Develop bespoke software tailored to your unique workflows. We architect scalable, secure systems that automate processes and boost productivity.",
               colorFrom: "from-purple-50",
               colorTo: "to-pink-50",
               icon: (
@@ -93,7 +93,8 @@ const ServicesComponent: React.FC = () => {
               ),
             },
             {
-              title: "E-Commerce Solutions",
+              title: "AI-Powered Solutions",
+              description: "Harness the power of artificial intelligence and machine learning to unlock insights, automate decisions, and create intelligent experiences for your customers.",
               colorFrom: "from-green-50",
               colorTo: "to-emerald-50",
               icon: (
@@ -121,7 +122,8 @@ const ServicesComponent: React.FC = () => {
               ),
             },
             {
-              title: "Tech Support Consulting",
+              title: "Tech Support & Consulting",
+              description: "Get expert guidance on technology strategy, architecture, and implementation. Our consultants help you make informed decisions that align with your business goals.",
               colorFrom: "from-blue-50",
               colorTo: "to-cyan-50",
               icon: (
@@ -164,8 +166,7 @@ const ServicesComponent: React.FC = () => {
                   {service.title}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Unlock growth, efficiency, and innovation with future-ready
-                  technology solutions tailored to your unique needs.
+                  {service.description}
                 </p>
               </div>
               <div

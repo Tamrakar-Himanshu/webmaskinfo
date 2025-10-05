@@ -14,7 +14,7 @@ const Navbar = () => {
     { name: "Our Work", href: "#work" },
     { name: "How It Works", href: "#howitworks" },
     { name: "FAQ", href: "#faq" },
-    { name: "Contact", href: "#footer" },
+    { name: "Contact", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Navbar = () => {
           scrolled ? "bg-white shadow-lg" : "bg-white/80 backdrop-blur-md"
         }`}
       >
-        <div className=" mx-auto max-w-8xl px-4 sm:px-6 lg:px-14">
+        <div className=" mx-auto max-w-8xl px-4 sm:px-6 lg:px-14 mt-2">
           <div className="flex items-center justify-between h-16 lg:h-16">
             {/* Logo */}
             <div className="flex-shrink-0">

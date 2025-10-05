@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 const AboutUsSection = () => {
   const [totalClients, setTotalClients] = useState(0);
   const [totalProjects, setTotalProjects] = useState(0);
-  const [testimonials, setTestimonials] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -47,13 +46,12 @@ const AboutUsSection = () => {
       }, 16);
     };
 
-    setTimeout(() => animateCounter(setTotalClients, 77), 200);
-    setTimeout(() => animateCounter(setTotalProjects, 77), 400);
-    setTimeout(() => animateCounter(setTestimonials, 77), 600);
+    setTimeout(() => animateCounter(setTotalClients, 50), 200);
+    setTimeout(() => animateCounter(setTotalProjects, 200), 400);
   }, [isVisible]);
 
   return (
-    <div className="bg-white py-24 px-6">
+    <div className="bg-white pt-8 sm:py-24 px-6">
       <div className="max-w-7xl mx-auto" ref={sectionRef}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Text Content */}
@@ -66,44 +64,53 @@ const AboutUsSection = () => {
                   <span className="absolute -bottom-1 left-0 w-full h-1 bg-orange-500"></span>
                 </span>
               </h2>
+              <p className="text-2xl md:text-3xl font-semibold text-gray-700 mt-6 leading-snug">
+                Innovative software solutions that drive your business forward
+              </p>
             </div>
 
             <div className="space-y-6">
               <p className="text-gray-600 text-base leading-relaxed">
-                Tech Monkey is a dynamic tech company founded by Varun, an
-                Oxford MBA with extensive expertise in entrepreneurship, and
-                Jainam, a visionary entrepreneur who co-built and sold their IT
-                startup to Amazon alongside Varun. Together, they bring over
-                eight years of combined experience in IT, sales, and CRM,
-                creating a foundation of innovation and excellence.
+                At WebMaskGlobal, we are passionate about crafting innovative
+                software solutions that propel businesses into the future.
+                Founded on the principles of excellence, creativity, and
+                collaboration, we specialize in developing custom software
+                tailored to meet the unique needs of each client.
               </p>
               <p className="text-gray-600 text-base leading-relaxed">
-                Headquartered in Dubai, with offices in the United Kingdom and
-                the United States, Tech Monkey specializes in developing
-                customized technology solutions tailored to the needs of modern
-                businesses. Our mission is to empower organizations to thrive in
-                a digital-first world by streamlining processes, enhancing
-                customer experiences, and driving sustainable growth.
+                Our team of experienced developers, designers, and strategists
+                work in harmony to transform complex challenges into elegant,
+                streamlined solutions. Whether you&apos;re a startup bringing a
+                groundbreaking idea to life or an established enterprise
+                optimizing operations, we possess the expertise to turn your
+                vision into reality.
               </p>
               <p className="text-gray-600 text-base leading-relaxed">
-                At Tech Monkey, Varun and Jainam&apos;s unique blend of
-                technical expertise and strategic insight fuels our commitment
-                to delivering cutting-edge solutions. Together, they lead a team
-                dedicated to shaping the future of IT with creativity,
-                precision, and impact.
+                We believe technology should empower, not complicate. That&apos;s
+                why we focus on creating user-friendly, scalable, and secure
+                software that enhances productivity and fuels sustainable
+                growth. From initial concept to final deployment, we partner
+                with you every step of the way, ensuring our solutions not only
+                meet but exceed your expectations.
+              </p>
+              <p className="text-gray-600 text-base leading-relaxed">
+                At WebMaskGlobal, we&apos;re more than just a software
+                company—we&apos;re your dedicated partner in innovation,
+                committed to helping you achieve your goals and unlock new
+                opportunities. Let&apos;s build the future together.
               </p>
             </div>
           </div>
 
           {/* Right Side - Stats Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-0 sm:mt-20">
+          <div className="grid grid-cols-2 sm:grid-cols-1 gap-6 sm:gap-16 mt-0 sm:mt-20">
             {/* Total Clients Card */}
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
               <div className="mb-4">
                 <svg
                   className="w-10 h-10 text-gray-700"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="currentColor" 
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -150,7 +157,7 @@ const AboutUsSection = () => {
             </div>
 
             {/* Testimonials Card - Spans 2 columns */}
-            <div className="sm:col-span-2 bg-gray-50 rounded-xl p-12 border border-gray-200 hover:shadow-lg transition-shadow duration-300 min-h-[180px]">
+            {/* <div className="sm:col-span-2 bg-gray-50 rounded-xl p-12 border border-gray-200 hover:shadow-lg transition-shadow duration-300 min-h-[180px]">
               <div className="flex items-center justify-between h-full">
                 <div>
                   <h3 className="text-gray-500 text-xs mb-2 font-medium uppercase tracking-wider">
@@ -177,7 +184,7 @@ const AboutUsSection = () => {
                   </svg>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

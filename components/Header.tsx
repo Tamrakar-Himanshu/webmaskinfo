@@ -1,17 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { CircleArrowRight } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
-import mobdivider from "@/public/assets/divider-main-1-phone.png";
-import divider from "@/public/assets/divider-main-1.png";
-
-// Import your card images
-import individualImg from "@/public/assets/individual.png";
-import couplesImg from "@/public/assets/couple.png";
-import teenImg from "@/public/assets/teen.png";
-import familyImg from "@/public/assets/teen.png";
-
 import Navbar from "./common/Navbar";
+import Image from "next/image";
 
 interface CardType {
   id: number;
@@ -20,8 +11,8 @@ interface CardType {
   word: string;
   bgColor: string;
   bottomBg: string;
-  image: StaticImageData; // Changed from string to StaticImageData
   fillColor: string;
+  image: string;
 }
 
 const HeroSection: React.FC = () => {
@@ -30,43 +21,43 @@ const HeroSection: React.FC = () => {
     () => [
       {
         id: 0,
-        title: "Individual",
-        subtitle: "For myself",
-        word: "happy",
-        bgColor: "bg-emerald-700",
-        bottomBg: "bg-yellow-300",
-        image: individualImg,
-        fillColor: "fill-emerald-700",
+        title: "Web Development",
+        subtitle: "Custom websites",
+        word: "innovative",
+        bgColor: "bg-blue-600",
+        bottomBg: "bg-blue-300",
+        fillColor: "fill-blue-600",
+        image: "https://illustrations.popsy.co/yellow/web-design.svg",
       },
       {
         id: 1,
-        title: "Couples",
-        subtitle: "For my partner",
-        word: "loved",
-        bgColor: "bg-teal-600",
-        bottomBg: "bg-teal-500",
-        image: couplesImg,
-        fillColor: "fill-teal-600",
+        title: "Mobile Apps",
+        subtitle: "iOS & Android",
+        word: "powerful",
+        bgColor: "bg-purple-600",
+        bottomBg: "bg-purple-400",
+        fillColor: "fill-purple-600",
+        image: "https://illustrations.popsy.co/pink/youtube-app.svg",
       },
       {
         id: 2,
-        title: "Teen",
-        subtitle: "For my child",
-        word: "supported",
-        bgColor: "bg-amber-700",
-        bottomBg: "bg-yellow-300",
-        image: teenImg,
-        fillColor: "fill-amber-700",
+        title: "Cloud Solutions",
+        subtitle: "Scalable infrastructure",
+        word: "reliable",
+        bgColor: "bg-cyan-600",
+        bottomBg: "bg-cyan-300",
+        fillColor: "fill-cyan-600",
+        image: "https://illustrations.popsy.co/sky/man-riding-a-rocket.svg",
       },
       {
         id: 3,
-        title: "Family",
-        subtitle: "For my family",
-        word: "connected",
-        bgColor: "bg-purple-700",
-        bottomBg: "bg-purple-400",
-        image: familyImg,
-        fillColor: "fill-purple-700",
+        title: "AI Integration",
+        subtitle: "Smart automation",
+        word: "intelligent",
+        bgColor: "bg-indigo-600",
+        bottomBg: "bg-indigo-400",
+        fillColor: "fill-indigo-600",
+        image: "https://illustrations.popsy.co/pink/designer.svg",
       },
     ],
     []
@@ -105,37 +96,36 @@ const HeroSection: React.FC = () => {
 
   return (
     <>
-      {/* Header */}
-      <Navbar />
       {/* Hero Section */}
-      <div className="bg-gradient-to-b from-[#712D13] to-[#BF5F0B]">
+      <Navbar />
+      <div className="bg-gradient-to-b from-slate-8 00 to-blue-900">
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-0 sm:gap-12 px-8 lg:px-16 pt-4 sm:pt-10 pb-16 sm:pb-12 items-center max-w-7xl mx-auto container mt-14"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-0 sm:gap-12 px-8 lg:px-16 pt-4 sm:pt-10 items-center max-w-7xl mx-auto container mt-14"
         >
           {/* Left Content */}
-          <div className="flex flex-col justify-center mt-10">
-            <h1 className="sm:text-left text-center text-[28px] lg:text-7xl font-extrabold mb-2 sm:mb-8 text-white">
-              You Deserve{" "}
-              <span className="inline-block sm:block relative h-[70px] sm:h-[85px] overflow-hidden min-w-[220px]">
+          <div className="flex flex-col justify-center mt-4 sm:mt-10  ">
+            <h1 className="sm:text-left text-center text-[48px] lg:text-8xl font-extrabold mb-2 sm:mb-8 text-white">
+              Technology That&apos;s{" "}
+              <span className="inline-block sm:block relative h-[70px] sm:h-[120px] overflow-hidden min-w-[330px]">
                 <span
-                  className="absolute top-0 left-0 w-full transition-transform duration-500 ease-in-out"
+                  className="absolute top-0 left-[-10] sm:left-0 w-full text-slate-800 transition-transform duration-1000 ease-out"
                   style={{
                     transform: isRolling
-                      ? "translateY(-120%)"
-                      : "translateY(5%)",
+                      ? "translateY(90%)"
+                      : "translateY(10%)",
                   }}
                 >
-                  <span className="block h-[60px]">{displayWord}</span>
+                  <span className="block h-[80px]">{displayWord}</span>
                   {nextWord && (
-                    <span className="block h-[60px]">{nextWord}</span>
+                    <span className="block h-[80px]">{nextWord}</span>
                   )}
                 </span>
               </span>
             </h1>
 
             <p className="text-white text-[20px] font-normal sm:font-semibold lg:text-2xl sm:text-left text-center">
-              What type of therapy are you looking for?
+              What type of service are you looking for?
             </p>
           </div>
 
@@ -161,11 +151,12 @@ const HeroSection: React.FC = () => {
                       <CircleArrowRight className="text-white w-5" />
                     </div>
                   </div>
-                  <div className="flex-shrink-0 w-52 h-28">
+                  <div className="relative flex-shrink-0 w-52 h-28 bg-white/10 rounded-lg">
                     <Image
                       src={card.image}
                       alt={card.title}
-                      className="w-full h-full object-cover rounded-lg"
+                      fill
+                      className="object-contain p-2"
                     />
                   </div>
                 </div>
@@ -209,11 +200,14 @@ const HeroSection: React.FC = () => {
                             />
                           </svg>
                           <div className="absolute inset-0 flex items-center justify-center p-8">
-                            <Image
-                              src={card.image}
-                              alt={card.title}
-                              className="w-full object-cover"
-                            />
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={card.image}
+                                alt={card.title}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -243,16 +237,30 @@ const HeroSection: React.FC = () => {
 
         {/* Dividers */}
         <div>
-          <Image
-            src={mobdivider}
-            alt="mobile divider"
+          {/* Mobile Divider */}
+          <svg
             className="w-full block md:hidden"
-          />
-          <Image
-            src={divider}
-            alt="desktop divider"
+            viewBox="0 0 400 60"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,30 C100,50 200,10 300,30 C350,40 380,30 400,35 L400,60 L0,60 Z"
+              className="fill-white"
+            />
+          </svg>
+          {/* Desktop Divider */}
+          <svg
             className="w-full hidden md:block"
-          />
+            viewBox="0 0 1200 100"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,50 C300,80 600,20 900,50 C1050,70 1150,50 1200,60 L1200,100 L0,100 Z"
+              className="fill-white"
+            />
+          </svg>
         </div>
       </div>
     </>
