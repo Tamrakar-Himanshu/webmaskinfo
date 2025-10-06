@@ -1,7 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Globe } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle,
+  Clock,
+  Globe,
+} from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -32,28 +41,74 @@ const Contact = () => {
     setSubmitStatus("idle");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+      const autoReplyTemplateId =
+        process.env.NEXT_PUBLIC_EMAILJS_AUTOREPLY_TEMPLATE_ID || "";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        setSubmitStatus("error");
+      if (!serviceId || !templateId || !publicKey) {
+        const missing = [
+          !serviceId ? "NEXT_PUBLIC_EMAILJS_SERVICE_ID" : null,
+          !templateId ? "NEXT_PUBLIC_EMAILJS_TEMPLATE_ID" : null,
+          !publicKey ? "NEXT_PUBLIC_EMAILJS_PUBLIC_KEY" : null,
+        ]
+          .filter(Boolean)
+          .join(", ");
+        throw new Error(
+          `Email service is not configured (missing: ${missing})`
+        );
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+
+      // Send main notification email to WebMask Global
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        from_phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        user_name: formData.name,
+        user_email: formData.email,
+        user_subject: formData.subject,
+        user_message: formData.message,
+        reply_to: formData.email,
+        to_name: "Webmask Global",
+      } as Record<string, string>;
+
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+
+      // Send auto-reply to the user from info@webmaskglobal.com
+      if (autoReplyTemplateId) {
+        const autoReplyParams = {
+          user_name: formData.name,
+          email: formData.email,
+          to_email: formData.email,
+          to_name: formData.name,
+          subject: formData.subject,
+          message: formData.message,
+          user_subject: formData.subject,
+          user_message: formData.message,
+        } as Record<string, string>;
+
+        await emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams, {
+          publicKey,
+        });
+      }
+
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error: any) {
+      console.error(
+        "Error submitting form:",
+        error?.status,
+        error?.text || error?.message || error
+      );
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -107,11 +162,14 @@ const Contact = () => {
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Let&apos;s Start a
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Conversation</span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              {" "}
+              Conversation
+            </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Have a project in mind? We&apos;re here to turn your ideas into reality. 
-            Reach out and let&apos;s create something amazing together.
+            Have a project in mind? We&apos;re here to turn your ideas into
+            reality. Reach out and let&apos;s create something amazing together.
           </p>
         </div>
 
@@ -173,28 +231,33 @@ const Contact = () => {
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
               <div className="flex items-center space-x-2 mb-6">
                 <MapPin className="h-6 w-6 text-blue-600" />
-                <h3 className="text-xl font-semibold text-gray-900">Our Offices</h3>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Our Offices
+                </h3>
               </div>
               <div className="space-y-4">
                 <div className="pb-4 border-b border-gray-200">
                   <p className="font-medium text-gray-900 mb-1">Bengaluru</p>
-                  <p className="text-sm text-gray-600">Jakkuru Layout, Karnataka 560092</p>
+                  <p className="text-sm text-gray-600">
+                    Jakkuru Layout, Karnataka 560092
+                  </p>
                 </div>
                 <div className="pb-4 border-b border-gray-200">
                   <p className="font-medium text-gray-900 mb-1">Hyderabad</p>
-                  <p className="text-sm text-gray-600">SR Nagar, Telangana 500016</p>
+                  <p className="text-sm text-gray-600">
+                    SR Nagar, Telangana 500016
+                  </p>
                 </div>
                 <div className="pb-4 border-b border-gray-200">
-                  <p className="font-medium text-gray-900 mb-1">Madhya Pradesh</p>
+                  <p className="font-medium text-gray-900 mb-1">
+                    Madhya Pradesh
+                  </p>
                   <p className="text-sm text-gray-600">Satna, MP 485661</p>
                 </div>
-                <div>
-                  <p className="font-medium text-gray-900 mb-1">Bengaluru</p>
-                  <p className="text-sm text-gray-600">3rd Street, 6th Floor, Karnataka 560092</p>
-                </div>
+                
               </div>
             </div>
-          </div>
+          </div>  
 
           {/* Right Column - Contact Form */}
           <div className="lg:col-span-3">
@@ -212,7 +275,7 @@ const Contact = () => {
                   <div>
                     <p className="font-semibold text-green-900">Success!</p>
                     <p className="text-green-800 text-sm">
-                      Message sent successfully! We&apos;ll get back to you soon.
+                      Thank you! We&apos;ll get back to you soon.
                     </p>
                   </div>
                 </div>
@@ -226,7 +289,7 @@ const Contact = () => {
                 </div>
               )}
 
-              <div className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -326,8 +389,7 @@ const Contact = () => {
                 </div>
 
                 <button
-                  type="button"
-                  onClick={handleSubmit}
+                  type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center space-x-2"
                 >
@@ -343,22 +405,10 @@ const Contact = () => {
                     </>
                   )}
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
-
-        {/* Trust Badges */}
-        {/* <div className="mt-16 text-center">
-          <p className="text-gray-600 mb-6">Trusted by leading companies worldwide</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
-            <div className="w-24 h-12 bg-gray-300 rounded"></div>
-            <div className="w-24 h-12 bg-gray-300 rounded"></div>
-            <div className="w-24 h-12 bg-gray-300 rounded"></div>
-            <div className="w-24 h-12 bg-gray-300 rounded"></div>
-            <div className="w-24 h-12 bg-gray-300 rounded"></div>
-          </div>
-        </div> */}
       </div>
     </section>
   );

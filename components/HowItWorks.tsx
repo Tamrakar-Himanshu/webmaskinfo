@@ -126,7 +126,7 @@ const HowItWorks: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F5F7F5] pt-20">
+    <div className="bg-[#F5F7F5] pt-20" id="howitworks">
       <div className="container mx-auto max-w-7xl">
         <div className="relative flex flex-col items-center mb-20">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-center text-slate-900 tracking-tight">

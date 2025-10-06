@@ -109,7 +109,7 @@ const HeroSection: React.FC = () => {
               Technology That&apos;s{" "}
               <span className="inline-block sm:block relative h-[70px] sm:h-[120px] overflow-hidden min-w-[330px]">
                 <span
-                  className="absolute top-0 left-[-10] sm:left-0 w-full text-slate-800 transition-transform duration-1000 ease-out"
+                  className="absolute top-0 left-[-1] sm:left-0 w-full text-slate-800 transition-transform duration-1000 ease-out"
                   style={{
                     transform: isRolling
                       ? "translateY(90%)"
@@ -143,15 +143,15 @@ const HeroSection: React.FC = () => {
                       <h3 className="text-lg font-semibold text-white">
                         {card.title}
                       </h3>
-                      <p className="text-md font-semibold text-white">
-                        {card.subtitle}
+                      <p className="text-xs font-semibold text-white">
+                        {card.subtitle}c
                       </p>
                     </div>
                     <div>
-                      <CircleArrowRight className="text-white w-5" />
+                      <CircleArrowRight className="text-white w-5 mx-1" />
                     </div>
                   </div>
-                  <div className="relative flex-shrink-0 w-52 h-28 bg-white/10 rounded-lg">
+                  <div className="relative flex-shrink-0 w-38 sm:w-52 h-28 bg-white/10 rounded-lg">
                     <Image
                       src={card.image}
                       alt={card.title}

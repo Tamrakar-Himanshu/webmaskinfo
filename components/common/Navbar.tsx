@@ -2,19 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Link, Menu, X } from "lucide-react";
 import logo from "@/public/logo6.png";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const router = useRouter();
   const navLinks = [
     { name: "About", href: "#aboutus" },
-    { name: "Our Work", href: "#work" },
+    { name: "Our Services", href: "#services" },
     { name: "How It Works", href: "#howitworks" },
     { name: "FAQ", href: "#faq" },
-    { name: "Contact", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -64,7 +64,10 @@ const Navbar = () => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
-              <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <button
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+                onClick={() => router.push("/contact")}
+              >
                 Get Started
               </button>
             </div>

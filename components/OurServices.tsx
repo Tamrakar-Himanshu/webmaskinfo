@@ -2,7 +2,7 @@ import React from "react";
 
 const ServicesComponent: React.FC = () => {
   return (
-    <section className="bg-white text-gray-900 py-16 px-6">
+    <section className="bg-white text-gray-900 py-16 px-6" id="services">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <header className="text-center mb-12 px-4">

@@ -51,7 +51,7 @@ const AboutUsSection = () => {
   }, [isVisible]);
 
   return (
-    <div className="bg-white pt-8 sm:py-24 px-6">
+    <div className="bg-white pt-8 sm:py-24 px-6" id="aboutus">
       <div className="max-w-7xl mx-auto" ref={sectionRef}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Text Content */}

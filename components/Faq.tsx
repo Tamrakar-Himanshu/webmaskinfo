@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import girl from "@/public/assets/divider-main-4.png";
-
+import { useRouter } from "next/navigation";  
 import Image from "next/image";
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
+  const router = useRouter();
   const faqs = [
     {
       question: "What services does your IT company provide?",
@@ -62,7 +62,7 @@ const Faq = () => {
           src={girl}
           alt="divider"
           fill
-          className="object-cover container mx-auto"
+          className="object-cover container mx-auto"  
         />
       </div>
 
@@ -120,7 +120,7 @@ const Faq = () => {
 
           {/* Get Started Button */}
           <div className="text-center px-16 sm:px-4">
-            <button className="bg-blue-600 hover:bg-blue-700 font-medium px-8 md:px-12 py-3 md:py-4 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg text-white w-full md:w-auto">
+            <button className="bg-blue-600 hover:bg-blue-700 font-medium px-8 md:px-12 py-3 md:py-4 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg text-white w-full md:w-auto" onClick={() => router.push("/contact")}>
               Contact Us
             </button>
           </div>
