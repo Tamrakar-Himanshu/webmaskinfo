@@ -103,11 +103,12 @@ const Contact = () => {
         subject: "",
         message: "",
       });
-    } catch (error: any) {
+    } catch (error) {
+      const err = error as { status?: number; text?: string; message?: string } | undefined;
       console.error(
         "Error submitting form:",
-        error?.status,
-        error?.text || error?.message || error
+        err?.status,
+        err?.text || err?.message || err
       );
       setSubmitStatus("error");
     } finally {

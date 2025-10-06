@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Link, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "@/public/logo6.png";
 import { useRouter } from "next/navigation";
 
